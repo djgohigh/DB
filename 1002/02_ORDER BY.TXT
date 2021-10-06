@@ -1,0 +1,86 @@
+SQL> insert into emp(empno,ename,position,hiredate,salary)
+  2  values(1,'이민호','사원','2021-01-01',3000);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into emp(empno,ename,position,hiredate,salary)
+  2  values(2,'정채연','사원','2021-02-01',3500);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into emp(empno,ename,position,hiredate,salary)
+  2  values(3,'송중기','대리','2019-03-01',5000);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select empno from emp order by empno asc;
+
+     EMPNO
+----------
+         1
+         2
+         3
+
+SQL> select empno,ename from emp order by empno asc;
+
+     EMPNO ENAME
+---------- --------------------
+         1 이민호
+         2 정채연
+         3 송중기
+
+SQL> select * from emp order by empno asc;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select empno from emp order by empno desc;
+
+     EMPNO
+----------
+         3
+         2
+         1
+
+SQL> select * from emp order by ename asc;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         3 송중기               대리                 19/03/01       5000
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp order by ename desc;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+         1 이민호               사원                 21/01/01       3000
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp order by salary asc;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp ORDER BY salary DESC;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         3 송중기               대리                 19/03/01       5000
+         2 정채연               사원                 21/02/01       3500
+         1 이민호               사원                 21/01/01       3000
