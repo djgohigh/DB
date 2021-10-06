@@ -1,0 +1,410 @@
+다음에 접속됨:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> create table emp(
+  2  empno varchar2(10));
+
+테이블이 생성되었습니다.
+
+SQL> alter table emp modify (company varchar2(20));
+alter table emp modify (company varchar2(20))
+                        *
+1행에 오류:
+ORA-00904: "COMPANY": 부적합한 식별자
+
+
+SQL> arter table emp modify (empno varchar2(30));
+SP2-0734: "arter tabl..."(으)로 시작되는 알 수 없는 명령 - 나머지 줄은 무시되었습니다.
+SQL> alter table emp modify (empno varchar2(30));
+
+테이블이 변경되었습니다.
+
+SQL> delete table emp
+  2  ;
+delete table emp
+       *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다
+
+
+SQL> delete table emp();
+delete table emp()
+       *
+1행에 오류:
+ORA-00903: 테이블명이 부적합합니다
+
+
+SQL> drop table emp;
+
+테이블이 삭제되었습니다.
+
+SQL> create table emp(
+  2  empno number(4),
+  3  ename varchar2(10),
+  4  position varcahr2(10),
+  5  hiredate date,
+  6  salary number(10)
+  7  );
+position varcahr2(10),
+                 *
+4행에 오류:
+ORA-00907: 누락된 우괄호
+
+
+SQL> create table emp(
+  2  empno number(4),
+  3  ename varchar2(10),
+  4  position varchar2(10),
+  5  hiredate date,
+  6  salary number(10)
+  7  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into emp
+  2  (empno, ename, position, hiredate, salary) values
+  3  (1, '이민호','사원','2021-01-01',3000);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into emp
+  2  (empno, ename, position, hiredate, salary) values
+  3  (2,'정채연','사원',
+  4  '2021-02-01',3500);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into emp
+  2  (empno, ename, position, hiredate, salary) values
+  3  (3,'송중기','대리','2019-03-01',5000);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where empno=1;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+
+SQL> select * from emp where empno=2;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where empno=3;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where empno >= 2;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where ename='정채연'ㅣ
+  2  ;
+
+*
+2행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
+
+
+SQL> select * from emp where ename='정채연';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where empno>=2 and position ='사원';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where empno>=2 or position='사원';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where not ename='정채연';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where empno between 2 and 3;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where empno between 4 and 10;
+
+선택된 레코드가 없습니다.
+
+SQL> select * from emp where salary between 3000 and 3400;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+
+SQL> select * from emp where salary between 3000 and 3500;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where salary between 3200 and 4000;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where salary between 3200 and 5000;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where hiredate between '21-01-01' and '21-02-01';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where hiredate between '21-01-01' and '21-03-01';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         2 정채연               사원                 21/02/01       3500
+
+SQL> select * from emp where hiredate between '19-03-01' and '21-01-01';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where ename between '송공기' and '이호현';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where ename between '송공기' and '이민기';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         3 송중기               대리                 19/03/01       5000
+
+SQL> select * from emp where ename between '송현기' and '정채민';
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               사원                 21/01/01       3000
+
+SQL> alter table emp add(company varchar2(10));
+
+테이블이 변경되었습니다.
+
+SQL> alter table emp modify(company varchar2(20));
+
+테이블이 변경되었습니다.
+
+SQL> alter table emp drop column company;
+
+테이블이 변경되었습니다.
+
+SQL> alter table emp add(company varchar2(10));
+
+테이블이 변경되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+COMPANY
+--------------------
+         1 이민호               사원                 21/01/01       3000
+
+
+         2 정채연               사원                 21/02/01       3500
+
+
+         3 송중기               대리                 19/03/01       5000
+
+
+
+SQL> alter table emp rename column company to company_name;
+
+테이블이 변경되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+COMPANY_NAME
+--------------------
+         1 이민호               사원                 21/01/01       3000
+
+
+         2 정채연               사원                 21/02/01       3500
+
+
+         3 송중기               대리                 19/03/01       5000
+
+
+
+SQL> update emp set salary=3200 where ename='이민호';
+
+1 행이 업데이트되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+COMPANY_NAME
+--------------------
+         1 이민호               사원                 21/01/01       3200
+
+
+         2 정채연               사원                 21/02/01       3500
+
+
+         3 송중기               대리                 19/03/01       5000
+
+
+
+SQL> update emp set hiredate='21-01-02' where ename='이민호';
+
+1 행이 업데이트되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+COMPANY_NAME
+--------------------
+         1 이민호               사원                 21/01/02       3200
+
+
+         2 정채연               사원                 21/02/01       3500
+
+
+         3 송중기               대리                 19/03/01       5000
+
+
+
+SQL> update emp set hiredate='2021-01-03' where ename = '이민호';
+
+1 행이 업데이트되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+COMPANY_NAME
+--------------------
+         1 이민호               사원                 21/01/03       3200
+
+
+         2 정채연               사원                 21/02/01       3500
+
+
+         3 송중기               대리                 19/03/01       5000
+
+
+
+SQL> update emp set position ='대리' where ename = '이민호';
+
+1 행이 업데이트되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+COMPANY_NAME
+--------------------
+         1 이민호               대리                 21/01/03       3200
+
+
+         2 정채연               사원                 21/02/01       3500
+
+
+         3 송중기               대리                 19/03/01       5000
+
+
+
+SQL> alter table emp drop column company_name;
+
+테이블이 변경되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         1 이민호               대리                 21/01/03       3200
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> delete from emp where ename ='이민호';
+
+1 행이 삭제되었습니다.
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         2 정채연               사원                 21/02/01       3500
+         3 송중기               대리                 19/03/01       5000
+
+SQL> delete from emp where position ='사원';
+
+1 행이 삭제되었습니다.
+
+SQL> select & from emp;
+from의 값을 입력하십시오: dd
+구   1: select & from emp
+신   1: select dd emp
+select dd emp
+            *
+1행에 오류:
+ORA-00923: FROM 키워드가 필요한 위치에 없습니다.
+
+
+SQL> select * from emp;
+
+     EMPNO ENAME                POSITION             HIREDATE     SALARY
+---------- -------------------- -------------------- -------- ----------
+         3 송중기               대리                 19/03/01       5000
+
+SQL> delete from emp where salary >= 5000;
+
+1 행이 삭제되었습니다.
+
+SQL> select * from emp;
+
+선택된 레코드가 없습니다.
