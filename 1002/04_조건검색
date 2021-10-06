@@ -1,0 +1,244 @@
+SQL> create table smartphone(
+  2  name varchar(20),
+  3  company varchar(20),
+  4  price int,
+  5  provider varchar(20),
+  6  weight int,
+  7  color varchar(20)
+  8  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('갤럭시 7','삼성','320000','SKT',600,'화이트');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('갤럭시 7','삼성','300000','LG U+',600,'블루');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('갤럭시 7','삼성','310000','KT',600,'블랙');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('갤럭시 8','삼성','400000','SKT',500,'블루');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('갤럭시 8','삼성','410000','SKT',600,'화이트');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('갤럭시 8','삼성','420000','SKT',500,'블루');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('G7','LG','250000','LG U+',650,'화이트');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('G7','LG','240000','KT',650,'블루');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('G8','LG','300000','LG U+',600,'실버');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into smartphone(name, company, price, provider, weight, color) values
+  2  ('G8','LG','310000','SKT',600,'골드');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> set linesize 250;
+SQL> select * from smartphone;
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 7                                 삼성                                         300000 LG U+                                        600 블루
+갤럭시 7                                 삼성                                         310000 KT                                           600 블랙
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+G7                                       LG                                           250000 LG U+
+                             650 화이트
+G7                                       LG                                           240000 KT
+                             650 블루
+G8                                       LG                                           300000 LG U+
+                             600 실버
+G8                                       LG                                           310000 SKT
+                             600 골드
+
+10 행이 선택되었습니다.
+
+SQL> select * from smartphone where company = '삼성';
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 7                                 삼성                                         300000 LG U+                                        600 블루
+갤럭시 7                                 삼성                                         310000 KT                                           600 블랙
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+
+6 행이 선택되었습니다.
+
+SQL> select * from smartphone where company = 'lg';
+
+선택된 레코드가 없습니다.
+
+SQL> select * from smartphone where company = 'LG';
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+G7                                       LG                                           250000 LG U+
+                             650 화이트
+G7                                       LG                                           240000 KT
+                             650 블루
+G8                                       LG                                           300000 LG U+
+                             600 실버
+G8                                       LG                                           310000 SKT
+                             600 골드
+
+SQL> select * from smartphone where provider = 'SKT';
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+G8                                       LG                                           310000 SKT
+                             600 골드
+
+SQL> select * from smartphone where company = '삼성' AND PROVIDER = 'SKT';
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+
+SQL> select * from smartphone where company = '삼성' AND PRICE <=300000;
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         300000 LG U+                                        600 블루
+
+SQL> select * from smartphone where company = '삼성' AND PRICE >=400000;
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+
+SQL> select * from smartphone order by price desc;
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 7                                 삼성                                         310000 KT                                           600 블랙
+G8                                       LG                                           310000 SKT
+                             600 골드
+G8                                       LG                                           300000 LG U+
+                             600 실버
+갤럭시 7                                 삼성                                         300000 LG U+                                        600 블루
+G7                                       LG                                           250000 LG U+
+                             650 화이트
+G7                                       LG                                           240000 KT
+                             650 블루
+
+10 행이 선택되었습니다.
+
+SQL> select * from smartphone order by price acs;
+select * from smartphone order by price acs
+                                        *
+1행에 오류:
+ORA-00933: SQL 명령어가 올바르게 종료되지 않았습니다
+
+
+SQL> select * from smartphone order by price asc;
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+G7                                       LG                                           240000 KT
+                             650 블루
+G7                                       LG                                           250000 LG U+
+                             650 화이트
+갤럭시 7                                 삼성                                         300000 LG U+                                        600 블루
+G8                                       LG                                           300000 LG U+
+                             600 실버
+갤럭시 7                                 삼성                                         310000 KT                                           600 블랙
+G8                                       LG                                           310000 SKT
+                             600 골드
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+
+10 행이 선택되었습니다.
+
+SQL> update smartphone set price = 310000 where name = '갤럭시 7' and provider ='LG U+';
+
+1 행이 업데이트되었습니다.
+
+SQL> delete from smartphone where name = '갤럭시 7' and color ='블루';
+
+1 행이 삭제되었습니다.
+
+SQL> select * from smartphone where name like '%갤럭시%';
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 7                                 삼성                                         310000 KT                                           600 블랙
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+
+SQL> select * from smartphone;
+
+NAME                                     COMPANY                                       PRICE PROVIDER
+                          WEIGHT COLOR
+---------------------------------------- ---------------------------------------- ---------- ---------------------------------------- ---------- ----------------------------------------
+갤럭시 7                                 삼성                                         320000 SKT                                          600 화이트
+갤럭시 7                                 삼성                                         310000 KT                                           600 블랙
+갤럭시 8                                 삼성                                         400000 SKT                                          500 블루
+갤럭시 8                                 삼성                                         410000 SKT                                          600 화이트
+갤럭시 8                                 삼성                                         420000 SKT                                          500 블루
+G7                                       LG                                           250000 LG U+
+                             650 화이트
+G7                                       LG                                           240000 KT
+                             650 블루
+G8                                       LG                                           300000 LG U+
+                             600 실버
+G8                                       LG                                           310000 SKT
+                             600 골드
+
+9 행이 선택되었습니다.
