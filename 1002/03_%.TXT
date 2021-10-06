@@ -1,0 +1,247 @@
+SQL> create table food(
+  2  name varchar2(20),
+  3  price number,
+  4  ent_date date
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('맛김',1000,'21-01-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('곱창김',1500,'21-02-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('김가루',1200,'21-03-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('땡초김밥',2500,'21-03-02');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('소곱창',5000,'21-04-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('스윙칩곱창맛',1500,'21-05-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('포카칩',1500,'21-06-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into food(name,price,ent_date) values
+  2  ('꼬북칩',1300,'21-07-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from food
+  2  ;
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+맛김                                           1000 21/01/01
+곱창김                                         1500 21/02/01
+김가루                                         1200 21/03/01
+땡초김밥                                       2500 21/03/02
+소곱창                                         5000 21/04/01
+스윙칩곱창맛                                   1500 21/05/01
+포카칩                                         1500 21/06/01
+꼬북칩                                         1300 21/07/01
+
+8 행이 선택되었습니다.
+
+SQL> select * from food where name LIKE '%김';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+맛김                                           1000 21/01/01
+곱창김                                         1500 21/02/01
+
+SQL> select * from food where name LIKE '_김';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+맛김                                           1000 21/01/01
+
+SQL> select * from food where name LIKE '__김';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+곱창김                                         1500 21/02/01
+
+SQL> select * from food where name LIKE '김%';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+김가루                                         1200 21/03/01
+
+SQL> select * from food where name LIKE '%김%';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+맛김                                           1000 21/01/01
+곱창김                                         1500 21/02/01
+김가루                                         1200 21/03/01
+땡초김밥                                       2500 21/03/02
+
+SQL> select * from food where name LIKE '곱창%';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+곱창김                                         1500 21/02/01
+
+SQL> select * from food where name LIKE '%곱창';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+소곱창                                         5000 21/04/01
+
+SQL> select * from food where name LIKE '%칩';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+포카칩                                         1500 21/06/01
+꼬북칩                                         1300 21/07/01
+
+SQL> select * from food where name LIKE '칩%';
+
+선택된 레코드가 없습니다.
+
+SQL> select * from food where name LIKE '%칩%';
+
+NAME                                          PRICE ENT_DATE
+---------------------------------------- ---------- --------
+스윙칩곱창맛                                   1500 21/05/01
+포카칩                                         1500 21/06/01
+꼬북칩                                         1300 21/07/01
+
+SQL> create table book(
+  2  title varchar2(50),
+  3  author char(20),
+  4  publisher varchar2(30),
+  5  pubDate Date,
+  6  page number(5)
+  7  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('어쩌다 한국인','허태균','큰빛','2020-01-01',350);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('가끔은 제정신','허태균','큰빛','2020-01-02',380);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('노는만큼 성공한다','김정운','청솔','2020-02-01',450);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('맥스웰 몰츠 성공의 법칙','맥스웰 몰츠','청솔','2020-02-02',550);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('자바의 정석','남궁성','한빛','2020-03-01',555);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('자바의 신','이상민','한빛','2020-03-02',555);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  (
+  3  '열혈 C프로그래밍','윤성우','오렌텍','2020-04-01',480);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('열혈 JAVA 프로그래밍','윤성우','오렌텍','2020-04-02',490);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('사피엔스','유발하라리','창공','2020-05-01',680);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into book(title, author, publisher, pubdate, page) values
+  2  ('코로나 사피엔스','최재천','창공','2020-05-02',620);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> set linesize 250;
+SQL> select * from book;
+
+TITLE                                                                                                AUTHOR                                   PUBLISHER                                                    PUBDATE        PAGE
+---------------------------------------------------------------------------------------------------- ---------------------------------------- ------------------------------------------------------------ -------- ----------
+어쩌다 한국인                                                                                        허태균                                   큰빛                                                         20/01/01        350
+가끔은 제정신                                                                                        허태균                                   큰빛                                                         20/01/02        380
+노는만큼 성공한다                                                                                    김정운                                   청솔                                                         20/02/01        450
+맥스웰 몰츠 성공의 법칙                                                                              맥스웰 몰츠                              청솔                                                         20/02/02        550
+자바의 정석                                                                                          남궁성                                   한빛                                                         20/03/01        555
+자바의 신                                                                                            이상민                                   한빛                                                         20/03/02        555
+열혈 C프로그래밍                                                                                     윤성우                                   오렌텍                                                       20/04/01        480
+열혈 JAVA 프로그래밍                                                                                 윤성우                                   오렌텍                                                       20/04/02        490
+사피엔스                                                                                             유발하라리                               창공                                                         20/05/01        680
+코로나 사피엔스                                                                                      최재천                                   창공                                                         20/05/02        620
+
+10 행이 선택되었습니다.
+
+SQL> select * from book where title LIKE '열혈%';
+
+TITLE                                                                                                AUTHOR
+                              PUBLISHER                                                    PUBDATE        PAGE
+---------------------------------------------------------------------------------------------------- ---------------------------------------- ------------------------------------------------------------ -------- ----------
+열혈 C프로그래밍                                                                                     윤성우                                오렌텍                                                       20/04/01        480
+열혈 JAVA 프로그래밍                                                                                 윤성우                                오렌텍                                                       20/04/02        490
+
+SQL> select * from book where title LIKE '%코로나%';
+
+TITLE                                                                                                AUTHOR
+                              PUBLISHER                                                    PUBDATE        PAGE
+---------------------------------------------------------------------------------------------------- ---------------------------------------- ------------------------------------------------------------ -------- ----------
+코로나 사피엔스                                                                                      최재천                                창공                                                         20/05/02        620
+
+SQL> select * from book where title LIKE '%사피엔스%';
+
+TITLE                                                                                                AUTHOR
+                              PUBLISHER                                                    PUBDATE        PAGE
+---------------------------------------------------------------------------------------------------- ---------------------------------------- ------------------------------------------------------------ -------- ----------
+사피엔스                                                                                             유발하라리
+                              창공                                                         20/05/01        680
+코로나 사피엔스                                                                                      최재천                                창공                                                         20/05/02        620
+
+SQL> select * from book where title LIKE '%자바%';
+
+TITLE                                                                                                AUTHOR
+                              PUBLISHER                                                    PUBDATE        PAGE
+---------------------------------------------------------------------------------------------------- ---------------------------------------- ------------------------------------------------------------ -------- ----------
+자바의 정석                                                                                          남궁성                                한빛                                                         20/03/01        555
+자바의 신                                                                                            이상민
+                              한빛                                                         20/03/02        555
+
+SQL> select * from book where title LIKE '%JAVA%';
+
+TITLE                                                                                                AUTHOR
+                              PUBLISHER                                                    PUBDATE        PAGE
+---------------------------------------------------------------------------------------------------- ---------------------------------------- ------------------------------------------------------------ -------- ----------
+열혈 JAVA 프로그래밍                                                                                 윤성우                                오렌텍                                                       20/04/02        490
