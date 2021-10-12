@@ -1,0 +1,214 @@
+SQL> create sequence EX_SEQ
+  2  INCREMENT BY 1
+  3  START WITH 1
+  4  MINVALUE 1
+  5  MAXVALUE 1000
+  6  NOCYCLE
+  7  NOCACHE;
+
+시퀀스가 생성되었습니다.
+
+SQL> CREATE TABLE PERSON(
+  2  NO NUMBER(3),
+  3  NAME VARCHAR(10),
+  4  AGE NUMBER(3),
+  5  HEIGHT NUMBER(5,2)
+  6  );
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO PERSON(NO, NAME, AGE, HEIGHT) VALUES (EX_SEQ.NEXTVAL, '홍준표', 20, 176.6);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO PERSON(NO, NAME, AGE, HEIGHT) VALUES (EX_SEQ.NEXTVAL, '문재인', 21, 178.2);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO PERSON(NO, NAME, AGE, HEIGHT) VALUES (EX_SEQ.NEXTVAL, '박근혜', 22, 162.3);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> SELECT * FROM PERSON;
+
+        NO NAME                        AGE     HEIGHT
+---------- -------------------- ---------- ----------
+         1 홍준표                       20      176.6
+         2 문재인                       21      178.2
+         3 박근혜                       22      162.3
+		 
+SQL> SELECT EX_SEQ.CURRVAL FROM PERSON;
+
+   CURRVAL
+----------
+         3
+         3
+         3
+
+SQL> SELECT EX_SEQ.NEXTVAL FROM PERSON;
+
+   NEXTVAL
+----------
+         4
+         5
+         6
+
+SQL> SELECT * FROM PERSON;
+
+        NO NAME                        AGE     HEIGHT
+---------- -------------------- ---------- ----------
+         1 홍준표                       20      176.6
+         2 문재인                       21      178.2
+         3 박근혜                       22      162.3
+
+SQL> CREATE TABLE BOARD(
+  2  TITLE VARCHAR2(10) NOT NULL,
+  3  CONTENT VARCHAR2(100) NOT NULL,
+  4  HASHTAG VARCHAR2(1000)
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO BOARD(TITLE, CONTENT, HASHTAG) VALUES('제목','내용1',NULL);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> CREATE TABLE STUDENT(
+  2  ID VARCHAR(20) PRIMARY KEY,
+  3  NAME VARCHAR(20),
+  4  MAJOR VARCHAR(20),
+  5  GRADE NUMBER(2),
+  6  ENT_DATE DATE
+  7  );
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO STUDENT(ID,NAME,MAJOR,GRADE,ENT_DATE)
+  2  VALUES('KU2021030818','이민호','컴퓨터공학과',1,'2021-03-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT(ID,NAME,MAJOR,GRADE,ENT_DATE)
+  2  VALUES('KU2020038018','송중기','컴퓨터공학과',2,'2020-03-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT(ID,NAME,MAJOR,GRADE,ENT_DATE)
+  2  VALUES('KU2019039018','정채연','전자공학과',3,'2019-03-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO STUDENT(ID,NAME,MAJOR,GRADE,ENT_DATE)
+  2  VALUES('KU2019039018','홍준표','전기공학과',4,'2018-03-01');
+INSERT INTO STUDENT(ID,NAME,MAJOR,GRADE,ENT_DATE)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SYSTEM.SYS_C007301)에 위배됩니다 // PRIMARY KEY
+
+SQL> INSERT INTO STUDENT(ID,NAME,MAJOR,GRADE,ENT_DATE)
+  2  VALUES('KU2018040018','홍준표','전기공학과',4,'2018-03-01');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> SELECT * FROM STUDENT
+  2  ;
+
+ID
+----------------------------------------
+NAME
+----------------------------------------
+MAJOR                                         GRADE ENT_DATE
+---------------------------------------- ---------- --------
+KU2021030818
+이민호
+컴퓨터공학과                                      1 21/03/01
+
+KU2020038018
+송중기
+컴퓨터공학과                                      2 20/03/01
+
+ID
+----------------------------------------
+NAME
+----------------------------------------
+MAJOR                                         GRADE ENT_DATE
+---------------------------------------- ---------- --------
+
+KU2019039018
+정채연
+전자공학과                                        3 19/03/01
+
+KU2018040018
+홍준표
+
+ID
+----------------------------------------
+NAME
+----------------------------------------
+MAJOR                                         GRADE ENT_DATE
+---------------------------------------- ---------- --------
+전기공학과                                        4 18/03/01
+
+
+SQL> CREATE TABLE CITIZEN(
+  2  ID VARCHAR2(20) UNIQUE,
+  3  NAME VARCHAR2(10),
+  4  ADDRESS VARCHAR2(30)
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO CITIZEN(ID,NAME,ADDRESS)
+  2  VALUES('990314-1779212','유승민','대구광역시 서구');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO CITIZEN(ID,NAME,ADDRESS)
+  2  VALUES('980314-1864535','안철수','서울특별시 동작구');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO CITIZEN(ID,NAME,ADDRESS)
+  2  VALUES('970314-1684646','김장훈','대전광역시 유성구');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO CITIZEN(ID,NAME,ADDRESS)
+  2  VALUES('960314-238551','박소담','대구광역시 달서구');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO CITIZEN(ID,NAME,ADDRESS)
+  2  VALUES('960314-238551','박소다','대구광역시 달서구');
+INSERT INTO CITIZEN(ID,NAME,ADDRESS)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SYSTEM.SYS_C007302)에 위배됩니다 // UNIQUE
+
+SQL> CREATE TABLE SAMSUNG(
+  2  EMPNO VARCHAR2(10),
+  3  ENAME VARCHAR2(10),
+  4  SAL NUMBER(7,2),
+  5  CONSTRAINT SAL_CK CHECK(SAL BETWEEN 500 AND 5000),
+  6  GENDER VARCHAR2(1),
+  7  CONSTRAINT GENDER_CK CHECK (GENDER IN('M','F'))
+  8  );
+
+테이블이 생성되었습니다.
+
+SQL> INSERT INTO SAMSUNG(EMPNO,ENAME,SAL,GENDER) VALUES
+  2  ('S202012','이재용',4500,'M');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SAMSUNG(EMPNO,ENAME,SAL,GENDER) VALUES
+  2  ('S202013','이부진',4000,'F');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> INSERT INTO SAMSUNG(EMPNO,ENAME,SAL,GENDER) VALUES
+  2  ('S202014','신동빈',5500,'M');
+INSERT INTO SAMSUNG(EMPNO,ENAME,SAL,GENDER) VALUES
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SYSTEM.SAL_CK)이 위배되었습니다 // CHECK 뒤 조건식 확인
